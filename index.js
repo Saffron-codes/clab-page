@@ -27,36 +27,57 @@ var progInfos = [
   { "path": "./c-source/hasing-probing.c", "title": "Hasing Using Linear And Quadratic Probing" }];
 
 
-  for (let index = 0; index < progInfos.length; index++) {
-    const progInfo = progInfos[index];
-    buildCodeBlock(progInfo,index);
+for (let index = 0; index < progInfos.length; index++) {
+  const progInfo = progInfos[index];
+  buildCodeBlock(progInfo, index);
+}
+
+
+const scrollBtn = document.getElementById("scroll-top");
+
+window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollBtn.style.display = "block";
+  } else {
+    scrollBtn.style.display = "none";
   }
+}
 
 
-function buildCodeBlock(progInfo,index) {
-    // adding the links for each program
-    const progLinks = document.getElementById("prog-links");
-    const listItem = document.createElement("li");
-    const anchor = document.createElement("a");
-    anchor.innerHTML = progInfo.title;
-    anchor.href = "#" + progInfo.path.substring(11, progInfo.path.length);
-    listItem.appendChild(anchor);
-    progLinks.appendChild(listItem);
-    // building the ui
-    const codeDiv = document.createElement("div");
-    const preBlock = document.createElement("pre");
-    const codeBlock = document.createElement("code");
-    const title = document.createElement("h2");
-    title.textContent = `${index+1} ) ${progInfo.title}`;
-    codeBlock.className = "language-clike prism-twilight";
-    codeBlock.setAttribute("data-primsjs-copy", "Copy");
-    codeDiv.id = progInfo.path.substring(11, progInfo.path.length);
-  
-    loadCode(progInfo.path, codeBlock);
-    preBlock.appendChild(codeBlock);
-    codeDiv.appendChild(title);
-    codeDiv.appendChild(preBlock);
-    document.body.appendChild(codeDiv);
+function scrollToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+
+
+
+function buildCodeBlock(progInfo, index) {
+  // adding the links for each program
+  const progLinks = document.getElementById("prog-links");
+  const listItem = document.createElement("li");
+  const anchor = document.createElement("a");
+  anchor.innerHTML = progInfo.title;
+  anchor.href = "#" + progInfo.path.substring(11, progInfo.path.length);
+  listItem.appendChild(anchor);
+  progLinks.appendChild(listItem);
+  // building the ui
+  const codeDiv = document.createElement("div");
+  const preBlock = document.createElement("pre");
+  const codeBlock = document.createElement("code");
+  const title = document.createElement("h2");
+  title.textContent = `${index + 1} ) ${progInfo.title}`;
+  codeBlock.className = "language-clike prism-twilight";
+  codeBlock.setAttribute("data-primsjs-copy", "Copy");
+  codeDiv.id = progInfo.path.substring(11, progInfo.path.length);
+
+  loadCode(progInfo.path, codeBlock);
+  preBlock.appendChild(codeBlock);
+  codeDiv.appendChild(title);
+  codeDiv.appendChild(preBlock);
+  document.body.appendChild(codeDiv);
 }
 
 

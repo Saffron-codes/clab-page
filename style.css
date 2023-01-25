@@ -1,13 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
-body{
+body {
     background-color: bisque;
     font-family: 'Roboto Condensed', sans-serif;
 }
-.header{
+
+.header {
     text-align: center;
     text-decoration: underline;
 }
-.titles{
+
+.titles {
     text-decoration: underline;
+}
+
+.top-of-site-link{
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.5rem;
+    z-index: 15;
+    background-color: transparent;
+    border: none;
+    display: none;
+    cursor: pointer;
 }
