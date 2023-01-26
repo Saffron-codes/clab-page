@@ -1,6 +1,6 @@
 // List using ADT
-#include "stdio.h"
-#include "stdlib.h"
+#include<stdio.h>
+#include<stdlib.h>
 int n, list[25];
 void create();
 int insert();

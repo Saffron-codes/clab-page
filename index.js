@@ -85,7 +85,9 @@ function buildCodeBlock(progInfo, index) {
 // loads the local c file and updates the ui
 async function loadCode(path, codeBlock) {
   let res = await fetch(path);
-  let code = '\n' + await res.text();
+  var code =  await res.text();
+  code = code.replace(/</g,'&lt;');
+  // code = code.replace('>','"');
   codeBlock.innerHTML = code;
   Prism.highlightElement(codeBlock);
 }

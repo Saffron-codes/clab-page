@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
- int i, j, k, a, b, u, v, n, ne = 1;
+int i, j, k, a, b, u, v, n, ne = 1;
 int min, mincost = 0, cost[9][9], parent[9];
 int find(int);
 int uni(int, int);
@@ -8,10 +8,10 @@ void main()
 {
   printf("Kruskal's algorithm in C\n");
   printf("========================\n");
- 
+
   printf("Enter the no. of vertices:\n");
   scanf("%d", &n);
- 
+
   printf("\nEnter the cost adjacency matrix:\n");
   for (i = 1; i <= n; i++)
   {
@@ -37,9 +37,9 @@ void main()
         }
       }
     }
-     u = find(u);
+    u = find(u);
     v = find(v);
-     if (uni(u, v))
+    if (uni(u, v))
     {
       printf("%d edge (%d,%d) =%d\n", ne++, a, b, min);
       mincost += min;
@@ -61,5 +61,5 @@ int uni(int i, int j)
     parent[j] = i;
     return 1;
   }
-   return 0;
+  return 0;
 }
