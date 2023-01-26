@@ -24,3 +24,11 @@ body {
     display: none;
     cursor: pointer;
 }
+.screen-reader-text{
+    background-color:beige;
+    padding: 10px;
+    position: fixed;
+    bottom: 1.2rem;
+    right: 4.1rem;
+    border-radius: 20px;
+}
