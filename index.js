@@ -37,6 +37,36 @@ const scrollBtn = document.getElementById("scroll-top");
 
 window.onscroll = function () { scrollFunction() };
 
+
+
+
+var count = 1;
+var counter = document.getElementById("counter");
+var milestone = document.getElementById("milestone");
+const db = firebase.firestore();
+function updateCount() {
+  db.collection("Visitorcount")
+    .doc("count")
+    .onSnapshot((doc)=>{
+      count = doc.data().count;
+      counter.innerHTML = count;
+      if (count % 5 === 0) {
+          milestone.innerHTML = "Congratulations! You are the " + count + "th visitor!";
+          milestone.className = "milestone";
+      }else{
+        milestone.innerHTML = "";
+        milestone.className = "";
+      }
+    })
+    // count++;
+}
+setInterval(updateCount, 1000);
+
+
+document.addEventListener("DOMContentLoaded",async()=>{
+  await updateDbCounter();
+})
+
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
     scrollBtn.style.display = "block";
@@ -90,4 +120,12 @@ async function loadCode(path, codeBlock) {
   // code = code.replace('>','"');
   codeBlock.innerHTML = code;
   Prism.highlightElement(codeBlock);
+}
+
+
+async function updateDbCounter(){
+  var counterRef = db.collection("Visitorcount").doc('count');
+  counterRef.update({
+    count:firebase.firestore.FieldValue.increment(1)
+  });
 }
