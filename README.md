@@ -1,4 +1,4 @@
-#Ece-clab-website
+# Ece-clab-website
 This website is primarily built for Data Structures Labortory (for reference purposes only)
 
 Please feel free to suggest any changes to the websites (anything basic works too)
